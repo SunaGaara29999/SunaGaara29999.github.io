@@ -228,7 +228,7 @@ window.addEventListener("load", function()
 
     form.addEventListener("submit", function(event) 
     {
-      if (!checkfirstname() || !checkmidinit() || !checklastname() || !validatePasswordMatch() || !validatebirthdate() || !checkSocialSecurity() || !checkZip() || !checkEmail() || !checkPhone() || !checkDescription() || !checkUsername() || !checkWellness()) 
+      if (!checkfirstname() || !checklastname() || !validatePasswordMatch() || !validatebirthdate() || !checkSocialSecurity() || !checkZip() || !checkEmail() || !checkPhone() || !checkDescription() || !checkUsername() || !checkWellness()) 
         {
           event.preventDefault();
         }
