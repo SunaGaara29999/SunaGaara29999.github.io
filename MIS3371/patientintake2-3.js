@@ -201,9 +201,6 @@ window.addEventListener("load", function()
 
   validatePasswordMatch();
   validatebirthdate();
-  checkfirstname();
-  checkmidinit();
-  checklastname();
   checkSocialSecurity();
   checkAddressLine1();
   checkAddressLine2();
