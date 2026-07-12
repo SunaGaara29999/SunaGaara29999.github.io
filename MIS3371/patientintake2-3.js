@@ -55,6 +55,9 @@ window.addEventListener("load", function()
 
   var form = document.getElementById("medform");
   var output = document.getElementById("outputformdata");
+  var firstNameInput = document.getElementById("firstname");
+  var midInitInput = document.getElementById("midinit");
+  var lastNameInput = document.getElementById("lastname");
   var passwordInput = document.getElementById("password");
   var confirmPasswordInput = document.getElementById("re-enter");
   var birthdateInput = document.getElementById("birthdate");
@@ -67,6 +70,26 @@ window.addEventListener("load", function()
   var phoneInput = document.getElementById("phone");
   var descriptionInput = document.getElementById("description");
   var usernameInput = document.getElementById("username");
+
+  if (firstNameInput) 
+    {
+      firstNameInput.addEventListener("blur", checkfirstname);
+    }
+
+  if (midInitInput) 
+    {
+      midInitInput.addEventListener("blur", checkmidinit);
+      midInitInput.addEventListener("input", function() 
+        {
+          midInitInput.value = midInitInput.value.toUpperCase();
+          checkmidinit();
+        });
+    }
+
+  if (lastNameInput) 
+    {
+      lastNameInput.addEventListener("blur", checklastname);
+    }
 
   if (passwordInput && confirmPasswordInput) 
     {
@@ -178,6 +201,9 @@ window.addEventListener("load", function()
 
   validatePasswordMatch();
   validatebirthdate();
+  checkfirstname();
+  checkmidinit();
+  checklastname();
   checkSocialSecurity();
   checkAddressLine1();
   checkAddressLine2();
@@ -205,7 +231,7 @@ window.addEventListener("load", function()
 
     form.addEventListener("submit", function(event) 
     {
-      if (!validatePasswordMatch() || !validatebirthdate() || !checkSocialSecurity() || !checkZip() || !checkEmail() || !checkPhone() || !checkDescription() || !checkUsername() || !checkWellness()) 
+      if (!checkfirstname() || !checkmidinit() || !checklastname() || !validatePasswordMatch() || !validatebirthdate() || !checkSocialSecurity() || !checkZip() || !checkEmail() || !checkPhone() || !checkDescription() || !checkUsername() || !checkWellness()) 
         {
           event.preventDefault();
         }
@@ -232,6 +258,7 @@ function closeModal()
         }
 } 
 
+/*referenced this from a mix of websites*/
 function escapeHtml(value) 
 {
   return String(value)
